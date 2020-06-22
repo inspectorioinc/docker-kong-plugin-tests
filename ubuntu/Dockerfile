@@ -1,8 +1,8 @@
 FROM ubuntu:18.04
-ARG KONG_VERSION=1.4.0
+ARG KONG_VERSION=2.0.4
 
 RUN apt-get -qq update \
- && apt-get -qq -y install curl unzip git openssl libpcre3 procps gettext perl wget build-essential \
+ && apt-get -qq -y install curl unzip git openssl libpcre3 procps gettext perl wget build-essential libssl-dev m4 \
  && wget --quiet -O kong-${KONG_VERSION}.bionic.amd64.deb https://bintray.com/kong/kong-deb/download_file?file_path=kong-${KONG_VERSION}.bionic.amd64.deb \
  && dpkg -i kong-${KONG_VERSION}.bionic.amd64.deb \
  && git -c advice.detachedHead=false clone --branch ${KONG_VERSION}  https://github.com/Kong/kong.git \
