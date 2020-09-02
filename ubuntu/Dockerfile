@@ -19,4 +19,4 @@ RUN chmod 770 docker-entrypoint.sh
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
-CMD ["/kong/docker-entrypoint.sh"]
+CMD ["/kong/docker-entrypoint.sh", "run_tests"]

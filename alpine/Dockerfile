@@ -5,7 +5,7 @@ ARG KONG_VERSION=2.0.4
 RUN apk add --no-cache --virtual .build-deps curl wget tar ca-certificates \
     && curl -fL "https://bintray.com/kong/kong-alpine-tar/download_file?file_path=kong-$KONG_VERSION.amd64.apk.tar.gz" -o /tmp/kong.tar.gz \
     && mkdir /kong \
-    && tar -C /kong -xzf /tmp/kong.tar.gz && ls -lrt /kong/usr/local/*\
+    && tar -C /kong -xzf /tmp/kong.tar.gz \
     && cp -r /kong/usr/local/* /usr/local/ \
     && cp -r /kong/etc/* /etc/ \
     && rm -rf /kong \
@@ -31,4 +31,4 @@ RUN chmod 770 docker-entrypoint.sh
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
-CMD ["/kong/docker-entrypoint.sh"]
+CMD ["/kong/docker-entrypoint.sh", "run_tests"]
