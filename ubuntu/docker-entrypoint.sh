@@ -1,8 +1,11 @@
 #!/bin/bash
 
+if [ ! -z "$(ls -A /plugin/)" ]; then
+  pushd /plugin/ && /usr/local/bin/luarocks make && popd
+fi
 
 case "$1" in
-  run_tests)
+  run_tests|"")
     export KONG_ADMIN_LISTEN="${KONG_ADMIN_LISTEN:=127.0.0.1:9001}"
     export KONG_PROXY_LISTEN="${KONG_PROXY_LISTEN:=0.0.0.0:9000, 0.0.0.0:9443 http2 ssl, 0.0.0.0:9002 http2}"
     export KONG_STREAM_LISTEN="${KONG_STREAM_LISTEN:=off}"
