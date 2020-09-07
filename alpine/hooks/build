@@ -1,0 +1,2 @@
+#!/bin/sh
+docker build --build-arg GEOIP_LICENSE_KEY=$GEOIP_LICENSE_KEY -t $IMAGE_NAME .
