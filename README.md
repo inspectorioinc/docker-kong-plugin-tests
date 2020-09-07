@@ -6,6 +6,20 @@ A docker container for:
 ## Uses
 [busted](https://github.com/Olivine-Labs/busted) unit testing framework and konghq helpers.lua modules
 
+## Building
+### Manually
+
+To build manually run
+
+```
+make build_${BASE_IMAGE} VERSION=${DKR_TAG} GEOIP_LICENSE_KEY=${GEOIP_LICENSE_KEY}
+```
+
+Where
+* BASE_IMAGE - one of alpine/ubuntu
+* DKR_TAG - docker tag you want to build your image with
+* GEOIP_LICENSE_KEY - your license key to download the maxmind geoip db
+
 ## Usage
 ## Running tests
 ### As base image in Dockerfile
